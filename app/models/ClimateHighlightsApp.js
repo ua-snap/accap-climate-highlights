@@ -1,4 +1,4 @@
-CH.models.ClimateHighlights = Backbone.Model.extend({
+CH.models.ClimateHighlightsApp = Backbone.Model.extend({
 	defaults: {
 		"date":moment().format('YYYY-MM-DD')
 	}

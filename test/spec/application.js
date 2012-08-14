@@ -1,8 +1,8 @@
 describe("application layout and scaffolding", function() {
 
   beforeEach( function() {
-    var m = new CH.models.ClimateHighlights();
-    var v = new CH.views.ClimateHighlights({
+    var m = new CH.models.ClimateHighlightsApp();
+    var v = new CH.views.ClimateHighlightsApp({
       model: m
     });
     v.render();
@@ -57,11 +57,7 @@ describe("application layout and scaffolding", function() {
 describe('Application container object', function() {
 
   beforeEach( function() {
-    this.ClimateHighlightsModel = new CH.models.ClimateHighlights();
-    var v = new CH.views.ClimateHighlights({
-      model: this.ClimateHighlightsModel
-    });
-    v.render();
+    this.ClimateHighlightsModel = new CH.models.ClimateHighlightsApp();
   });
 
   it('knows what the currently-viewed month is', function() {
@@ -70,6 +66,21 @@ describe('Application container object', function() {
 
   it('defaults to the current month, if none is provided by URL', function() {
       expect(this.ClimateHighlightsModel.get('date')).toEqual(moment().format('YYYY-MM-DD'));
+  });
+
+  it('requests data as though its id were the date', function() {
+    server = sinon.fakeServer.create();
+
+    server.respondWith( 'GET', 'date/2012-08', ch.fixtures.serverResponses.getAugust2012 );
+
+    server.restore();
+  });
+
+  it('creates a Backbone collection from the list of highlights it gets from the server', function() {
+
+    this.ClimateHighlightsModel = new CH.models.ClimateHighlightsApp( ch.fixtures.models.august2012);
+
+
   });
 
 });

@@ -1,7 +1,9 @@
 describe('list of climate highlights', function() {
+
 	it('has a list of daily events', function() {
 		expect($('#climate_highlights_lists ul.daily')).toBeVisible();
 	});
+
 	it('has a list of monthly events', function() {
 		expect($('#climate_highlights_lists ul.monthly')).toBeVisible();
 	});

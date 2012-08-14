@@ -35,12 +35,34 @@ ch.fixtures.models.monthly1 = {
 	"kind":"high temperatures"
 };
 
-ch.fixtures.models.daily2 = {
+ch.fixtures.models.monthly2 = {
 	"date": "2012-8",
-	"interval":"daily",
+	"interval":"monthly",
 	"lat":"",
 	"lon":"",
 	"summary":"monthly highlight 2",
 	"description":"<p>full HTML description of monthly highlight #2</p>",
 	"kind":"high temperatures"
 };
+
+ch.fixtures.models.august2012 = {
+	"id" : "2012-08",
+	"previousCount" : 0,
+	"nextCount" : 0,
+	"highlights" : [
+		ch.fixtures.models.daily1,
+		ch.fixtures.models.daily2,
+		ch.fixtures.models.monthly1,
+		ch.fixtures.models.monthly2
+	]
+};
+
+ch.fixtures.serverResponses = {};
+
+ch.fixtures.serverResponses.getAugust2012 = [
+	'200',
+	{
+		"Content-Type" : "application/json"
+	},
+	JSON.stringify(ch.fixtures.models.august2012)
+];

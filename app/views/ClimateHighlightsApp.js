@@ -1,4 +1,4 @@
-CH.views.ClimateHighlights = Backbone.View.extend({
+CH.views.ClimateHighlightsApp = Backbone.View.extend({
 	el: '#climate_highlights',
 	model: CH.models.ClimateHighlights,
 	render: function() {

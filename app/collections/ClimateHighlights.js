@@ -1,0 +1,1 @@
+CH.collections.ClimateHighlights = Backbone.Collection.extend({});
