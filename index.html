@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Climate Highlights</title>
+
+
+  <script type="text/javascript" src="app/vendor/jquery-1.8.0.min.js"></script>
+  <script type="text/javascript" src="app/vendor/underscore-min.js"></script>
+  <script type="text/javascript" src="app/vendor/backbone-min.js"></script>
+
+  <script type="text/javascript" src="app/CH.js"></script>
+  <script type="text/javascript" src="app/models/ClimateHighlights.js"></script>
+  <script type="text/javascript" src="app/views/ClimateHighlights.js"></script>
+  
+</head>
+<body>
+
+<script type="text/html" id="template-climate_highlights">
+<h2>Climate Highlights</h2>
+<div class="buttons">
+  <button class="about btn btn-info">About</button>
+  <button class="staff-contact btn btn-info">Contact</button>
+</div>
+<div id="climate_highlights_nav"></div>
+<div id="climate_highlights_lists"></div>
+<div class="logos">
+</div>
+</script>
+
+</body>
+
+<script type="text/javascript">
+$(function() {
+	var router = new CH.router;
+	Backbone.history.start();
+});
+</script>
+
+
+</html>
