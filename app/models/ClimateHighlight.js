@@ -1,0 +1,1 @@
+CH.models.ClimateHighlight = Backbone.Model.extend({});

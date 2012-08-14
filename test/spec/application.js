@@ -11,36 +11,44 @@ describe("application layout and scaffolding", function() {
   describe("'About' button", function() {
 
     it('has an About button, styled by Bootstrap', function() {
-      expect( $('#climate_highlights button.about.btn.btn-info')).toBeVisible();
+      expect( $('#climate_highlights a.about.btn.btn-info')).toBeVisible();
     });
 
     it('opens the About modal dialog when clicked', function() {
       expect( $('#climate_highlights_modal_about')).not.toBeVisible();
-      $('#climate_highlights button.about').click();
+      $('#climate_highlights a.about').click();
       expect( $('#climate_highlights_modal_about')).toBeVisible();
+      $('#climate_highlights_modal_about button.close').click();
+      expect( $('#climate_highlights_modal_about')).not.toBeVisible();
+
     });
 
   });
 
   describe("'Staff/Contact' button", function() {
+
     it('has an About button, styled by Bootstrap', function() {
-      expect( $('#climate_highlights button.staff-contact.btn.btn-info')).toBeVisible();
+      expect( $('#climate_highlights a.staff-contact.btn.btn-info')).toBeVisible();
     });
+
     it('opens the About modal dialog when clicked', function() {
       expect( $('#climate_highlights_modal_staff-contact')).not.toBeVisible();
-      $('#climate_highlights button.staff-contact').click();
+      $('#climate_highlights a.staff-contact').click();
       expect( $('#climate_highlights_modal_staff-contact')).toBeVisible();
+      $('#climate_highlights_modal_staff-contact button.close').click();
+      expect( $('#climate_highlights_modal_staff-contact')).not.toBeVisible();
+
     });
 
     it('has a section displaying the logos of partners, each linked to the partner web site', function() {
       expect( $('#climate_highlights div.logos a.accap img')).toBeVisible();
-      expect( $('#climate_highlights div.logos a.accap').prop('href')).toEqual('http://accap.uaf.alaska.edu');
+      expect( $('#climate_highlights div.logos a.accap').prop('href')).toEqual('http://accap.uaf.alaska.edu/');
       expect( $('#climate_highlights div.logos a.iarc img')).toBeVisible();
       expect( $('#climate_highlights div.logos a.iarc').prop('href')).toEqual('http://www.iarc.uaf.edu/');
       expect( $('#climate_highlights div.logos a.noaa img')).toBeVisible();
-      expect( $('#climate_highlights div.logos a.noaa').prop('href')).toEqual('http://http://www.noaa.gov/');
+      expect( $('#climate_highlights div.logos a.noaa').prop('href')).toEqual('http://www.noaa.gov/');
       expect( $('#climate_highlights div.logos a.acrc img')).toBeVisible();
-      expect( $('#climate_highlights div.logos a.acrc').prop('href')).toEqual('http://http:climate.gi.alaska.edu/');
+      expect( $('#climate_highlights div.logos a.acrc').prop('href')).toEqual('http://akclimate.org/');
     });
 
   });
@@ -48,12 +56,36 @@ describe("application layout and scaffolding", function() {
 
 describe('Application container object', function() {
 
+  beforeEach( function() {
+    this.ClimateHighlightsModel = new CH.models.ClimateHighlights();
+    var v = new CH.views.ClimateHighlights({
+      model: this.ClimateHighlightsModel
+    });
+    v.render();
+  });
+
   it('knows what the currently-viewed month is', function() {
-    this.fail('tbd');
+    expect(this.ClimateHighlightsModel.get('date')).toBeDefined();
   });
 
   it('defaults to the current month, if none is provided by URL', function() {
+      expect(this.ClimateHighlightsModel.get('date')).toEqual(moment().format('YYYY-MM-DD'));
+  });
+
+});
+
+describe('Main application router', function() {
+
+  it('can reload state from a link', function() {
     this.fail('tbd');
+  });
+
+});
+
+describe('application utility belt', function() {
+
+  it('returns a title string from the "kind" category', function() {
+    expect(CH.getTitleFromKind('high-temperatures')).toEqual('High Temperatures');
   });
 
 });

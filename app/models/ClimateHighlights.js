@@ -1,5 +1,5 @@
 CH.models.ClimateHighlights = Backbone.Model.extend({
 	defaults: {
-		"date":Date.now()
+		"date":moment().format('YYYY-MM-DD')
 	}
 });

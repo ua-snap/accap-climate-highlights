@@ -14,7 +14,7 @@ describe('climate highlight list view', function() {
 	});
 
 	it('displays a Bootstrap icon widget so the summary looks clickable', function() {
-		expect($('#climate_highlights_lists ul.daily:first i.icon-zoom-in')).toBeVisible();		
+		expect($('#climate_highlights_lists ul.daily:first i.icon-zoom-in')).toBeVisible();
 	});
 
 	it('opens the Climate Highlight Modal view window when it is clicked', function() {

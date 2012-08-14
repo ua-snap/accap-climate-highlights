@@ -20,3 +20,10 @@ CH.router = Backbone.Router.extend({
 	}
 
 });
+
+// Utility belt functions
+CH.getTitleFromKind = function(kind) {
+	switch(kind) {
+		case 'high-temperatures': return 'High Temperatures';
+	}
+};

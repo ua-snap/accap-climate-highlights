@@ -3,10 +3,13 @@
 <head>
 	<title>Climate Highlights</title>
 
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
   <script type="text/javascript" src="app/vendor/jquery-1.8.0.min.js"></script>
   <script type="text/javascript" src="app/vendor/underscore-min.js"></script>
   <script type="text/javascript" src="app/vendor/backbone-min.js"></script>
+
+  <script type="text/javascript" src="app/vendor/bootstrap.min.js"></script>
 
   <script type="text/javascript" src="app/CH.js"></script>
   <script type="text/javascript" src="app/models/ClimateHighlights.js"></script>
@@ -15,17 +18,49 @@
 </head>
 <body>
 
-<script type="text/html" id="template-climate_highlights">
+<div id="climate_highlights">
+
 <h2>Climate Highlights</h2>
 <div class="buttons">
-  <button class="about btn btn-info">About</button>
-  <button class="staff-contact btn btn-info">Contact</button>
+  <a class="about btn btn-info" data-toggle="modal" href="#climate_highlights_modal_about">About</a>
+  <a class="staff-contact btn btn-info" data-toggle="modal" href="#climate_highlights_modal_staff-contact">Contact</a>
 </div>
 <div id="climate_highlights_nav"></div>
 <div id="climate_highlights_lists"></div>
 <div class="logos">
+  <a class="accap" href=""><img src="" alt="ACCAP" /></a>
+  <a class="noaa" href=""><img src="" /></a>
+  <a class="acrc" href=""><img src="" /></a>
+  <a class="iarc" href=""><img src="" /></a>
 </div>
-</script>
+
+<div class="modal hide" id="climate_highlights_modal_about">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h3>About</h3>
+  </div>
+  <div class="modal-body">
+    <p>about text</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+  </div>
+</div>
+
+<div class="modal hide" id="climate_highlights_modal_staff-contact">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h3>Staff / Contact</h3>
+  </div>
+  <div class="modal-body">
+    <p>staff/contact</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+  </div>
+</div>
+
+</div>
 
 </body>
 
