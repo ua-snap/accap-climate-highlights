@@ -18,43 +18,45 @@ ch.fixtures.models.daily1 = {
 ch.fixtures.models.daily2 = {
 	"date": "2012-8",
 	"interval":"daily",
-	"lat":"58.6883",
-	"lon":"156.6614",
+	"lat":"52.6883",
+	"lon":"-166.6614",
 	"summary":"daily highlight 2 in king salmon",
-	"description":"<p>full HTML description of daily highlight #2 in <blink>king salmon</blink></p>",
-	"kind":"high temperatures"
+	"description":"<p>full HTML description of daily highlight #2 in <b>king salmon</b></p>",
+	"kind":"high-snow"
 };
 
 ch.fixtures.models.monthly1 = {
 	"date": "2012-8",
 	"interval":"monthly",
 	"lat":"64.8378",
-	"lon":"147.7164",
+	"lon":"-147.7164",
 	"summary":"monthly highlight 1 in fbx",
 	"description":"<p>full HTML description of first monthly highlight in fbx</p>",
-	"kind":"high temperatures"
+	"kind":"wind"
 };
 
 ch.fixtures.models.monthly2 = {
 	"date": "2012-8",
 	"interval":"monthly",
-	"lat":"",
-	"lon":"",
+	"lat":"64.9",
+	"lon":"-149",
 	"summary":"monthly highlight 2",
 	"description":"<p>full HTML description of monthly highlight #2</p>",
-	"kind":"high temperatures"
+	"kind":"high-temperatures"
 };
+
+ch.fixtures.arrayOfHighlights = [
+	ch.fixtures.models.daily1,
+	ch.fixtures.models.daily2,
+	ch.fixtures.models.monthly1,
+	ch.fixtures.models.monthly2
+];
 
 ch.fixtures.models.august2012 = {
 	"id" : "2012-08",
-	"previousCount" : 0,
-	"nextCount" : 0,
-	"highlights" : [
-		ch.fixtures.models.daily1,
-		ch.fixtures.models.daily2,
-		ch.fixtures.models.monthly1,
-		ch.fixtures.models.monthly2
-	]
+	"previousCount" : 5,
+	"nextCount" : 2,
+	"highlights" : ch.fixtures.arrayOfHighlights
 };
 
 ch.fixtures.serverResponses = {};

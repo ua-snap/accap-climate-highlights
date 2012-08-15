@@ -1,8 +1,14 @@
 describe('Navigation between next/prev month', function() {
 
+	beforeEach( function() {
+		var m = new CH.models.ClimateHighlightsApp(ch.fixtures.models.august2012);
+		var v = new CH.views.Navigation({model: m});
+		v.render();
+	});
+
 	it('displays the current month/year', function() {
 		expect($('#climate_highlights_nav h2')).toHaveText('August 2012');
-	})
+	});
 
 	describe('previous button', function() {
 		
@@ -11,11 +17,14 @@ describe('Navigation between next/prev month', function() {
 		});
 
 		it('displays the name of the previous month', function() {
-			expect($('#climate_highlights_nav button.previous')).toHaveText('July');
+			expect($('#climate_highlights_nav button.previous span')).toHaveText('July 2012');
 		});
 
 		it('disables the button if the previous month has no highlights', function() {
-			// some setup needed here
+			var m = new CH.models.ClimateHighlightsApp(ch.fixtures.models.august2012);
+			m.set({'previousCount':0});
+			var v = new CH.views.Navigation({model: m});
+			v.render();
 			expect($('#climate_highlights_nav button.previous')).toBeDisabled();
 		});
 
@@ -31,11 +40,14 @@ describe('Navigation between next/prev month', function() {
 		});
 
 		it('displays the name of the next month', function() {
-			expect($('#climate_highlights_nav button.next')).toHaveText('September');
+			expect($('#climate_highlights_nav button.next span')).toHaveText('September 2012');
 		});
 
 		it('disables the button if the next month has no highlights', function() {
-			// some setup needed here
+			var m = new CH.models.ClimateHighlightsApp(ch.fixtures.models.august2012);
+			m.set({'nextCount':0});
+			var v = new CH.views.Navigation({model: m});
+			v.render();
 			expect($('#climate_highlights_nav button.next')).toBeDisabled();
 		});
 

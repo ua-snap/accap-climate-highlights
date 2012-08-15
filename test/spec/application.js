@@ -79,7 +79,7 @@ describe('Application container object', function() {
   it('creates a Backbone collection from the list of highlights it gets from the server', function() {
 
     this.ClimateHighlightsModel = new CH.models.ClimateHighlightsApp( ch.fixtures.models.august2012);
-
+    expect( this.ClimateHighlightsModel.get('collection') instanceof CH.collections.ClimateHighlights ).toBeTruthy();
 
   });
 

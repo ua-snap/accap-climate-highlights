@@ -1,5 +1,13 @@
 describe('list of climate highlights', function() {
 
+	beforeEach( function() {
+
+		this.collection = new CH.collections.ClimateHighlights(ch.fixtures.arrayOfHighlights);
+		this.view = new CH.views.ClimateHighlightsLists( {collection: this.collection} );
+		this.view.render();
+
+	});
+
 	it('has a list of daily events', function() {
 		expect($('#climate_highlights_lists ul.daily')).toBeVisible();
 	});
@@ -9,10 +17,18 @@ describe('list of climate highlights', function() {
 	});
 });
 
-describe('climate highlight list view', function() {
-	
+describe('climate highlight list item view', function() {
+
+	afterEach( function() {
+		$('#climate_highlight_modal').modal('hide');
+	});
+
 	it('displays the short summary description of the climate highlight', function() {
-		expect($('#climate_highlights_lists ul.daily:first span.summary')).toHaveText('first daily climate highlight');
+		expect($('#climate_highlights_lists ul.daily li:first span.summary')).toHaveText('daily highlight 1');
+	});
+
+	it('attaches the class of the kind of highlight to the list item', function() {
+		expect($('#climate_highlights_lists ul.daily li:first')).toHaveClass('high-temperatures');
 	});
 
 	it('displays a Bootstrap icon widget so the summary looks clickable', function() {
@@ -20,7 +36,7 @@ describe('climate highlight list view', function() {
 	});
 
 	it('opens the Climate Highlight Modal view window when it is clicked', function() {
-		this.fail('tbd until event model is worked out', function() {
-		});
+		$('#climate_highlights_lists ul.daily li:first').click();
+		expect($('#climate_highlight_modal')).toBeVisible();
 	});
 });
