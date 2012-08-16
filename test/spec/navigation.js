@@ -1,9 +1,9 @@
 describe('Navigation between next/prev month', function() {
 
 	beforeEach( function() {
-		var m = new CH.models.ClimateHighlightsApp(ch.fixtures.models.august2012);
-		var v = new CH.views.Navigation({model: m});
-		v.render();
+		this.model = new CH.models.ClimateHighlightsApp(ch.fixtures.models.august2012);
+		this.view = new CH.views.Navigation({model: this.model});
+		this.view.render();
 	});
 
 	it('displays the current month/year', function() {

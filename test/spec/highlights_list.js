@@ -1,9 +1,9 @@
-describe('list of climate highlights', function() {
+describe('list view of climate highlights', function() {
 
 	beforeEach( function() {
 
-		this.collection = new CH.collections.ClimateHighlights(ch.fixtures.arrayOfHighlights);
-		this.view = new CH.views.ClimateHighlightsLists( {collection: this.collection} );
+		this.model = new CH.models.ClimateHighlightsApp(ch.fixtures.models.august2012);
+		this.view = new CH.views.ClimateHighlightsLists( {model: this.model} );
 		this.view.render();
 
 	});

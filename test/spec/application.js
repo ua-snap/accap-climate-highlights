@@ -1,11 +1,17 @@
-describe("application layout and scaffolding", function() {
+describe("application view (layout and scaffolding)", function() {
 
   beforeEach( function() {
-    var m = new CH.models.ClimateHighlightsApp();
-    var v = new CH.views.ClimateHighlightsApp({
-      model: m
-    });
-    v.render();
+    this.router = new CH.router();
+  });
+
+  it('refreshes its child views (navigation, map, list of highlights) when the date changes on the app model', function() {
+    spyOn(this.router.appView.listsView, 'render');
+    spyOn(this.router.appView.mapView, 'render');
+    spyOn(this.router.appView.navView, 'render');
+    this.router.appModel.set({'date':'2012-05'});
+    expect(this.router.appView.listsView.render).toHaveBeenCalled();
+    expect(this.router.appView.mapView.render).toHaveBeenCalled();
+    expect(this.router.appView.navView.render).toHaveBeenCalled();
   });
 
   describe("'About' button", function() {
@@ -54,21 +60,33 @@ describe("application layout and scaffolding", function() {
   });
 });
 
-describe('Application container object', function() {
+describe('Application container model', function() {
 
   beforeEach( function() {
-    this.ClimateHighlightsModel = new CH.models.ClimateHighlightsApp();
+    this.model = new CH.models.ClimateHighlightsApp(ch.fixtures.august2012);
+  });
+
+  it('assigns its URL and service endpoint from a global configuration object + the endpoint "[configurable endpoint]/YYYY-MM', function() {
+    
+    CH.config.appModelUrl = 'http://somewhere.com/';
+    expect(this.model.url()).toEqual('http://somewhere.com/highlights/2012-08');
+
+  });
+
+  it('uses the "date" attributes as its ID', function() {
+    this.fail('tbd');
   });
 
   it('knows what the currently-viewed month is', function() {
-    expect(this.ClimateHighlightsModel.get('date')).toBeDefined();
+    expect(this.model.get('date')).toBeDefined();
   });
 
   it('defaults to the current month, if none is provided by URL', function() {
-      expect(this.ClimateHighlightsModel.get('date')).toEqual(moment().format('YYYY-MM-DD'));
+      expect(this.model.get('date')).toEqual(moment().format('YYYY-MM'));
   });
 
   it('requests data as though its id were the date', function() {
+    this.fail('tbd');
     server = sinon.fakeServer.create();
 
     server.respondWith( 'GET', 'date/2012-08', ch.fixtures.serverResponses.getAugust2012 );
@@ -78,17 +96,46 @@ describe('Application container object', function() {
 
   it('creates a Backbone collection from the list of highlights it gets from the server', function() {
 
-    this.ClimateHighlightsModel = new CH.models.ClimateHighlightsApp( ch.fixtures.models.august2012);
-    expect( this.ClimateHighlightsModel.get('collection') instanceof CH.collections.ClimateHighlights ).toBeTruthy();
+    this.model = new CH.models.ClimateHighlightsApp( ch.fixtures.models.august2012);
+    expect( this.model.get('collection') instanceof CH.collections.ClimateHighlights ).toBeTruthy();
 
+  });
+
+  it('notices when its date is changed, and refreshes the collection from the server', function() {
+    var spy = spyOn(CH.models.ClimateHighlightsApp.prototype, 'fetch').andCallThrough();
+    model = new CH.models.ClimateHighlightsApp( ch.fixtures.models.august2012 );
+    model.set({'date':'2005-12'});
+    expect(spy).toHaveBeenCalled();
   });
 
 });
 
 describe('Main application router', function() {
 
-  it('can reload state from a link', function() {
-    this.fail('tbd');
+  beforeEach( function() {
+    this.router = new CH.router();
+  });
+
+  it('can "Boot" the app, invoking and rendering the navigation, list of highlights, and the map', function() {
+    spyOn(this.router.appView, 'render');
+    this.router.index();
+    expect(this.router.appView.render).toHaveBeenCalled();
+  });
+
+  describe('correctly reloading state', function() {
+
+    it('invokes the correct route with paramter from URL', function() {
+
+      var eventSpy = CH.eventSpy(CH.router, 'date');
+      Backbone.history.start();
+      eventSpy.instance.navigate('date/2012-08');
+      expect(eventSpy.spy).toHaveBeenCalledWith('2012-08');
+    });
+
+    it('checks for malformed date input, defaulting to current month/year', function() {
+      this.fail('tbd');
+    });
+
   });
 
 });
@@ -97,6 +144,20 @@ describe('application utility belt', function() {
 
   it('returns a title string from the "kind" category', function() {
     expect(CH.getTitleFromKind('high-temperatures')).toEqual('High Temperatures');
+    expect(CH.getTitleFromKind('high-rain')).toEqual('High Rain');
+    expect(CH.getTitleFromKind('high-snow')).toEqual('High Snow');
+    expect(CH.getTitleFromKind('low-temperatures')).toEqual('Low Temperatures');
+    expect(CH.getTitleFromKind('low-rain')).toEqual('Low Rain');
+    expect(CH.getTitleFromKind('low-snow')).toEqual('Low Snow');
+    expect(CH.getTitleFromKind('blizzard')).toEqual('Blizzard');
+    expect(CH.getTitleFromKind('cyclone')).toEqual('Cyclone');
+    expect(CH.getTitleFromKind('drought')).toEqual('Drought');
+    expect(CH.getTitleFromKind('flooding')).toEqual('Flooding');
+    expect(CH.getTitleFromKind('icing')).toEqual('Icing');
+    expect(CH.getTitleFromKind('lightning')).toEqual('Lightning');
+    expect(CH.getTitleFromKind('sea-ice-changes')).toEqual('Sea Ice Changes');
+    expect(CH.getTitleFromKind('wildfire')).toEqual('Wildfire');
+    expect(CH.getTitleFromKind('wind')).toEqual('Wind');
   });
 
 });

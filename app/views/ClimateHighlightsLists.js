@@ -6,7 +6,12 @@ CH.views.ClimateHighlightsLists = Backbone.View.extend({
 
 		$(this.el).empty();
 
-		var daily = this.collection.filter(function(ch) {
+		// guard in case the code somehow gets here with an empty or uninitialized collection
+		if( undefined === this.model || this.model.get('collection') === undefined ) {
+			throw("Model wasn't initialized correctly in ClimateHighlightLists section");
+		}
+
+		var daily = this.model.get('collection').filter(function(ch) {
 			return 'daily' === ch.get('interval');
 		});
 
@@ -22,7 +27,7 @@ CH.views.ClimateHighlightsLists = Backbone.View.extend({
 			$(this.el).append(ul);
 		}
 
-		var monthly = this.collection.filter(function(ch) {
+		var monthly = this.model.get('collection').filter(function(ch) {
 			return 'monthly' === ch.get('interval');
 		});
 
