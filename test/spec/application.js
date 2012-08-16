@@ -73,10 +73,6 @@ describe('Application container model', function() {
 
   });
 
-  it('uses the "date" attributes as its ID', function() {
-    this.fail('tbd');
-  });
-
   it('knows what the currently-viewed month is', function() {
     expect(this.model.get('date')).toBeDefined();
   });
@@ -85,17 +81,8 @@ describe('Application container model', function() {
       expect(this.model.get('date')).toEqual(moment().format('YYYY-MM'));
   });
 
-  it('requests data as though its id were the date', function() {
-    this.fail('tbd');
-    server = sinon.fakeServer.create();
-
-    server.respondWith( 'GET', 'date/2012-08', ch.fixtures.serverResponses.getAugust2012 );
-
-    server.restore();
-  });
-
   it('creates a Backbone collection from the list of highlights it gets from the server', function() {
-
+    
     this.model = new CH.models.ClimateHighlightsApp( ch.fixtures.models.august2012);
     expect( this.model.get('collection') instanceof CH.collections.ClimateHighlights ).toBeTruthy();
 

@@ -5,7 +5,6 @@ CH.views.Navigation = Backbone.View.extend({
 
 		$(this.el).empty();
 		template = _.template($('#template-navigation').html());
-		console.log( );
 
 		$(this.el).append(template({
 			month: moment(this.model.get('date'), 'YYYY-MM').format('MMMM YYYY'),
