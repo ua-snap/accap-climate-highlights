@@ -120,7 +120,8 @@ describe('Main application router', function() {
     });
 
     it('checks for malformed date input, defaulting to current month/year', function() {
-      this.fail('tbd');
+      this.router.date('rubbish');
+      expect(this.router.appModel.get('date')).toEqual( moment().format('YYYY-MM') );
     });
 
   });

@@ -57,10 +57,14 @@ describe('interactive map', function() {
 		});
 
 		it('opens the modal Climate Highlight window when the map marker is clicked', function() {
+
 			expect($('#climate_highlight_modal')).not.toBeVisible();
 			google.maps.event.trigger(this.map.markers[1], 'click');
 			expect($('#climate_highlight_modal')).toBeVisible();
-			expect($('#climate_highlight_modal div.modal-header h3')).toHaveText('High Temperatures, August 2012');
+			expect($('#climate_highlight_modal div.modal-header h3')).toHaveText('Wind, August 2012');
+
+			// cleanup
+			this.map.markers[1].climateHighlightModal.destroy();
 		});
 	});
 });

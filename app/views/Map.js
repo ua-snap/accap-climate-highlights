@@ -52,11 +52,17 @@ CH.views.Map = Backbone.View.extend({
 			if( ch.get('lat') && ch.get('lon') ) {
 
 				var image = 'img/highlight_icon/' + ch.get('kind') + '.gif';
-				this.markers.push(new google.maps.Marker({
+				var marker = new google.maps.Marker({
 					position: new google.maps.LatLng(ch.get('lat'), ch.get('lon')),
 					map: this.map,
-					icon: image
-				}));
+					icon: image,
+					climateHighlightModal: new CH.views.ClimateHighlightModal( { model: ch })
+				});
+				google.maps.event.addListener(marker, 'click', function(e) {
+					// We're in the context of the marker object, here.
+					this.climateHighlightModal.render();
+				});
+				this.markers.push(marker);
 				
 			}
 
