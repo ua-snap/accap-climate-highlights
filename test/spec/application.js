@@ -111,8 +111,8 @@ describe('Main application router', function() {
 
   describe('correctly reloading state', function() {
 
-    it('invokes the correct route with paramter from URL', function() {
-
+    it('invokes the correct route with parameter from URL', function() {
+      throw('this is failing on the first page load, but not subsequent ones -- this probably is not working yet');
       var eventSpy = CH.eventSpy(CH.router, 'date');
       Backbone.history.start();
       eventSpy.instance.navigate('date/2012-08');
