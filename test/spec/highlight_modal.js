@@ -1,7 +1,9 @@
 describe("climate highlight modal popup", function() {
 
 	beforeEach( function() {
-
+		
+		jasmine.getFixtures().fixturesPath = '.';
+		loadFixtures('fixture.html');
 		this.ClimateHighlight = new CH.models.ClimateHighlight( ch.fixtures.models.daily1 );
 		this.ClimateHighlightModal = new CH.views.ClimateHighlightModal( { model: this.ClimateHighlight });
 		this.ClimateHighlightModal.render();

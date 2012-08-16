@@ -1,6 +1,8 @@
 describe("application view (layout and scaffolding)", function() {
 
   beforeEach( function() {
+    jasmine.getFixtures().fixturesPath = '.';
+    loadFixtures('fixture.html');
     this.router = new CH.router();
   });
 
@@ -67,7 +69,7 @@ describe('Application container model', function() {
   });
 
   it('assigns its URL and service endpoint from a global configuration object + the endpoint "[configurable endpoint]/YYYY-MM', function() {
-    
+
     CH.config.appModelUrl = 'http://somewhere.com/';
     expect(this.model.url()).toEqual('http://somewhere.com/highlights/2012-08');
 
@@ -78,11 +80,11 @@ describe('Application container model', function() {
   });
 
   it('defaults to the current month, if none is provided by URL', function() {
-      expect(this.model.get('date')).toEqual(moment().format('YYYY-MM'));
+    expect(this.model.get('date')).toEqual(moment().format('YYYY-MM'));
   });
 
   it('creates a Backbone collection from the list of highlights it gets from the server', function() {
-    
+
     this.model = new CH.models.ClimateHighlightsApp( ch.fixtures.models.august2012);
     expect( this.model.get('collection') instanceof CH.collections.ClimateHighlights ).toBeTruthy();
 
@@ -112,7 +114,6 @@ describe('Main application router', function() {
   describe('correctly reloading state', function() {
 
     it('invokes the correct route with parameter from URL', function() {
-      throw('this is failing on the first page load, but not subsequent ones -- this probably is not working yet');
       var eventSpy = CH.eventSpy(CH.router, 'date');
       Backbone.history.start();
       eventSpy.instance.navigate('date/2012-08');

@@ -2,6 +2,9 @@ describe('list view of climate highlights', function() {
 
 	beforeEach( function() {
 
+		jasmine.getFixtures().fixturesPath = '.';
+		loadFixtures('fixture.html');
+
 		this.model = new CH.models.ClimateHighlightsApp(ch.fixtures.models.august2012);
 		this.view = new CH.views.ClimateHighlightsLists( {model: this.model} );
 		this.view.render();
@@ -18,9 +21,16 @@ describe('list view of climate highlights', function() {
 });
 
 describe('climate highlight list item view', function() {
+	
+	beforeEach( function() {
+		
+		jasmine.getFixtures().fixturesPath = '.';
+		loadFixtures('fixture.html');
+	
+		this.model = new CH.models.ClimateHighlightsApp(ch.fixtures.models.august2012);
+		this.view = new CH.views.ClimateHighlightsLists( {model: this.model} );
+		this.view.render();
 
-	afterEach( function() {
-		$('#climate_highlight_modal').modal('hide');
 	});
 
 	it('displays the short summary description of the climate highlight', function() {
@@ -38,5 +48,7 @@ describe('climate highlight list item view', function() {
 	it('opens the Climate Highlight Modal view window when it is clicked', function() {
 		$('#climate_highlights_lists ul.daily li:first').click();
 		expect($('#climate_highlight_modal')).toBeVisible();
+
+		$('.modal-backdrop').remove(); // cleanup the modal overlay that is hanging around in the DOM
 	});
 });

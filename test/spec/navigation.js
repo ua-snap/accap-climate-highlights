@@ -1,6 +1,10 @@
 describe('Navigation between next/prev month', function() {
 
 	beforeEach( function() {
+
+		jasmine.getFixtures().fixturesPath = '.';
+		loadFixtures('fixture.html');
+
 		this.model = new CH.models.ClimateHighlightsApp(ch.fixtures.models.august2012);
 		this.view = new CH.views.Navigation({model: this.model});
 		this.view.render();

@@ -1,6 +1,10 @@
 describe('interactive map', function() {
 
 	beforeEach( function() {
+		
+		jasmine.getFixtures().fixturesPath = '.';
+		loadFixtures('fixture.html');
+	
 		this.app = new CH.models.ClimateHighlightsApp(ch.fixtures.models.august2012);
 		this.map = new CH.views.Map( { model: this.app } );
 	});
