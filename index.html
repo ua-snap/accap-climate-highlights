@@ -11,6 +11,7 @@
 
   <script type="text/javascript" src="app/vendor/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/ch.css">
 
   <!-- include source files here... -->
   <script type="text/javascript" src="app/CH.js"></script>
@@ -39,23 +40,42 @@
 
 <body>
 
-<div id="climate_highlights">
+<div class="container">
 
-<h2>Climate Highlights</h2>
-<div class="buttons">
-  <a class="about btn btn-info" data-toggle="modal" href="#climate_highlights_modal_about">About</a>
-  <a class="staff-contact btn btn-info" data-toggle="modal" href="#climate_highlights_modal_staff-contact">Contact</a>
+<div id="climate_highlights" class="page-header">
+
+<h1>Alaska Weather &amp; Climate Highlights</h1>
+
 </div>
 
-<div id="climate_highlights_nav"></div>
-<div id="climate_highlights_lists"></div>
-<div id="climate_highlights_map" style="width: 500px; height: 500px; border: 1px solid #aaa"></div>
+<div class="row">
+  <div class="span4">
+    <div class="well">
+      <div id="climate_highlights_nav"></div>
+      <div id="climate_highlights_lists"></div>
+    </div>
+
+  <div class="buttons">
+    <a class="about btn btn-info" data-toggle="modal" href="#climate_highlights_modal_about">About</a>
+    <a class="staff-contact btn btn-info" data-toggle="modal" href="#climate_highlights_modal_staff-contact">Contact</a>
+  </div>
+
+  </div>
+  <div class="span8">
+
+<div id="climate_highlights_map" style="width: 100%; min-height: 600px; border: 1px solid #aaa"></div>
 
 <div class="logos">
   <a class="accap" href="http://accap.uaf.alaska.edu"><img src="" alt="ACCAP Logo" /></a>
   <a class="noaa" href="http://www.noaa.gov/"><img src="" alt="NOAA Logo" /></a>
   <a class="acrc" href="http://akclimate.org/"><img src="" alt="ACRC Logo" /></a>
   <a class="iarc" href="http://www.iarc.uaf.edu/"><img src="" alt="IARC Logo" /></a>
+</div>
+
+
+</div>
+</div>
+
 </div>
 
 <!-- to be filled in by the ClimateHighlightModal view -->
@@ -87,13 +107,13 @@
   </div>
 </div>
 
-</div>
-
 <!-- templates -->
 <script type="text/html" id="template-navigation">
 <h2><%= month %></h2>
+<div class="buttons">
 <button class="btn btn-nav previous"><i class="icon-circle-arrow-left"></i>&nbsp;<span><%= previous %></span></button>
-<button class="btn btn-nav next"><span><%= next %></span>&nbsp;<i class="icon-circle-arrow-right"></i></button>
+<button class="btn btn-nav next pull-right"><span><%= next %></span>&nbsp;<i class="icon-circle-arrow-right"></i></button>
+</div>
 </script>
 
 <script type="text/html" id="template-climate-highlight-list-item">

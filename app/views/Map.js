@@ -3,8 +3,8 @@ CH.views.Map = Backbone.View.extend({
 	mapOptions: function() {
 		return {
 			center: new google.maps.LatLng(64, -155),
-			zoom: 3,
-			mapTypeId: google.maps.MapTypeId.SATELLITE,
+			zoom: 4,
+			mapTypeId: google.maps.MapTypeId.TERRAIN,
 			minZoom: 3,
 			maxZoom: 5
 		};

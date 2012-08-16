@@ -11,7 +11,7 @@ describe('interactive map', function() {
 
 
 	it('defaults to be zoomed/panned to show Alaska', function() {
-		expect(this.map.mapOptions().zoom).toEqual(3);
+		expect(this.map.mapOptions().zoom).toEqual(4);
 		expect(this.map.mapOptions().center.Xa).toEqual(64);
 		expect(this.map.mapOptions().center.Ya).toEqual(-155);
 	});
