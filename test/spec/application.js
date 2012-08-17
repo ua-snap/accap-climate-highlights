@@ -111,9 +111,14 @@ describe('Main application router', function() {
     expect(this.router.appView.render).toHaveBeenCalled();
   });
 
-  describe('correctly reloading state', function() {
+  describe('state maintenance', function() {
 
     it('invokes the correct route with parameter from URL', function() {
+
+      // need the DOM so the triggered events don't fail
+      jasmine.getFixtures().fixturesPath = '.';
+      loadFixtures('fixture.html');
+
       var eventSpy = CH.eventSpy(CH.router, 'date');
       Backbone.history.start();
       eventSpy.instance.navigate('date/2012-08');

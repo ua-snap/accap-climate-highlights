@@ -15,10 +15,10 @@ module.exports = function(grunt) {
     concat: {
       drupal: {
         src: [
-          'build/ch.js', // minified version of CH javascript
           'assets/underscore-min.js',
           'assets/backbone-min.js',
-          'assets/moment.min.js'
+          'assets/moment.min.js',
+          'build/ch.js' // minified version of CH javascript, must go last so requirements are declared first
           ],
         dest: "dist/ch.js"
       }

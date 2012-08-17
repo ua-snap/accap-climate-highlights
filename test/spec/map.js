@@ -50,7 +50,7 @@ describe('interactive map', function() {
 			// test will focus on how the view manages adding markers.
 			expect(this.map.markers.length).toEqual(3); // there's 4 items in the list, but only 3 have lat/lon and should be here
 			expect(this.map.markers[0].position instanceof google.maps.LatLng).toBeTruthy();
-			expect(this.map.markers[0].icon).toEqual('img/highlight_icon/high-snow.gif'); // first item with lat/lon
+			expect(this.map.markers[0].icon).toEqual('img/icons/high-snow.gif'); // first item with lat/lon
 
 		});
 
