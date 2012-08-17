@@ -5,3 +5,47 @@
 #climate_highlights_nav div.buttons {
 	margin: 1ex auto 2em;
 }
+
+#climate_highlights div.logos {
+	margin: 1em auto;
+}
+
+#climate_highlights div.logos img {
+	height: 70px;
+	display: inline-block;
+	margin: 0 1em;
+}
+
+#climate_highlights_lists ul li {
+	cursor: pointer;
+}
+
+#climate_highlights_lists ul li:hover {
+	text-decoration: underline;
+}
+
+#climate_highlight_modal div.modal-header h3 {
+	height: 2em;
+	padding-left: 48px;
+	line-height: 2em;
+}
+
+h3.high-temperatures {
+	background: transparent url(../img/highlights_v2/high-temperatures.png) left center no-repeat;
+} 
+
+h3.low-temperatures {
+	background: transparent url(../img/highlights_v2/low-temperatures.png) left center no-repeat;
+} 
+
+h3.high-rain {
+	background: transparent url(../img/highlights_v2/high-rain.png) left center no-repeat;
+} 
+
+h3.flooding {
+	background: transparent url(../img/highlights_v2/flooding.png) left center no-repeat;
+} 
+
+h3.sea-ice-changes {
+	background: transparent url(../img/highlights_v2/sea-ice-changes.png) left center no-repeat;
+} 

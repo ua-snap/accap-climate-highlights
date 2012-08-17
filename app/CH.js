@@ -26,7 +26,7 @@ CH.router = Backbone.Router.extend({
 	},
 
 	initialize: function() {
-		this.appModel = new CH.models.ClimateHighlightsApp(ch.fixtures.models.august2012);
+		this.appModel = new CH.models.ClimateHighlightsApp(ch.fixtures.models.july2010);
 		this.appView = new CH.views.ClimateHighlightsApp({
 			model: this.appModel
 		});
