@@ -31,21 +31,21 @@
 }
 
 h3.high-temperatures {
-	background: transparent url(../img/highlights_v2/high-temperatures.png) left center no-repeat;
+	background: transparent url(../img/icons/high-temperatures.gif) left center no-repeat;
 } 
 
 h3.low-temperatures {
-	background: transparent url(../img/highlights_v2/low-temperatures.png) left center no-repeat;
+	background: transparent url(../img/icons/low-temperatures.gif) left center no-repeat;
 } 
 
 h3.high-rain {
-	background: transparent url(../img/highlights_v2/high-rain.png) left center no-repeat;
+	background: transparent url(../img/icons/high-rain.gif) left center no-repeat;
 } 
 
 h3.flooding {
-	background: transparent url(../img/highlights_v2/flooding.png) left center no-repeat;
+	background: transparent url(../img/icons/flooding.gif) left center no-repeat;
 } 
 
 h3.sea-ice-changes {
-	background: transparent url(../img/highlights_v2/sea-ice-changes.png) left center no-repeat;
+	background: transparent url(../img/icons/sea-ice-changes.gif) left center no-repeat;
 } 
