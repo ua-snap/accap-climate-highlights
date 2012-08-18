@@ -14,6 +14,9 @@ CH.models.ClimateHighlightsApp = Backbone.Model.extend({
 	},
 
 	initialize: function(properties, options) {
+		if(properties && properties.highlights) {
+			this.set(this.parse(properties), { silent: true });
+		}
 	}
 	
 });

@@ -11,7 +11,23 @@
   <script type="text/javascript" src="../assets/underscore-min.js"></script>
   <script type="text/javascript" src="../assets/backbone-min.js"></script>
   <script type="text/javascript" src="../assets/moment.min.js"></script>
+
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD396FFxND65ixBJPkbJ6WpM0V3Q-KEExo&sensor=false"></script>
+  <script type="text/void">
+
+// Mock the google object to allow unit tests if the google isn't available.
+// The tests won't pass but they'll run.  Disable it if internet is available.
+var google = google || {};
+google.maps = {};
+google.maps.MapTypeId = {};
+google.maps.MapTypeId.TERRAIN = 'terrain';
+google.maps.event = {};
+google.maps.event.addListener = function() {}
+google.maps.Marker = function() {};
+google.maps.LatLng = function() {};
+google.maps.Map = function() {};
+
+  </script>
 
   <script type="text/javascript" src="../assets/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">

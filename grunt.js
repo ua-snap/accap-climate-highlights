@@ -25,7 +25,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // Takes the built require.js file and minifies it for filesize benefits.
+    // Minifies all custom JS to integrate with other libraries
     min: {
       "build/ch.js": [
         "app/**/*.js"
@@ -36,5 +36,8 @@ module.exports = function(grunt) {
 
   // The release task will minifies then concats the files into dist/
   grunt.registerTask("release", "min concat");
+
+  // only minify all custom JS for analysis
+  grunt.registerTask("solo", "min");
 
 };

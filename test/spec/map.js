@@ -31,7 +31,7 @@ describe('interactive map', function() {
 			// https://groups.google.com/forum/?fromgroups#!topic/jasmine-js/ExMnH7e29hQ%5B1-25%5D
 			waitsFor(function() {
 				return $('#climate_highlights_map').html() !== '';
-			}, "gmaps never loaded", 15000 );
+			}, "gmaps never loaded", CH.config.asyncTimeout);
 
 		});
 

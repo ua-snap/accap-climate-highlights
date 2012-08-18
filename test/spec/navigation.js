@@ -32,16 +32,6 @@ describe('Navigation between next/prev month', function() {
 			expect($('#climate_highlights_nav button.previous')).toBeDisabled();
 		});
 
-		it('refreshes the map to display the previous month results when clicked', function() {
-
-			model = new CH.models.ClimateHighlightsApp(ch.fixtures.models.august2012);
-			spy = CH.eventSpy(CH.views.Navigation, 'previousMonth', {model:model});
-			spy.instance.render();
-			$('#climate_highlights_nav button.previous').click();
-			expect(spy.spy).toHaveBeenCalled();
-			expect(model.get('date')).toEqual('2012-07');
-
-		});
 	});
 
 	describe('next button', function() {
@@ -62,16 +52,6 @@ describe('Navigation between next/prev month', function() {
 			expect($('#climate_highlights_nav button.next')).toBeDisabled();
 		});
 
-		it('refreshes the map to display the next month results when clicked', function() {
-
-			model = new CH.models.ClimateHighlightsApp(ch.fixtures.models.august2012);
-			spy = CH.eventSpy(CH.views.Navigation, 'nextMonth', {model:model});
-			spy.instance.render();
-			$('#climate_highlights_nav button.next').click();
-			expect(spy.spy).toHaveBeenCalled();
-			expect(model.get('date')).toEqual('2012-09');
-
-		});
 	});
 });
 
