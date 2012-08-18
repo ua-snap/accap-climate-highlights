@@ -5,25 +5,15 @@ CH.models.ClimateHighlightsApp = Backbone.Model.extend({
 	},
 
 	url: function() {
+		return CH.config.appModelUrl + CH.config.serviceEndpoint + this.get('date');
+	},
 
-		if( CH.config.appModelUrl === undefined ) {
-			throw('Cannot find service endpoing configuration.');
-		}
-
-		return CH.config.appModelUrl + CH.config.serviceEndpoint + '/' + this.get('date');
-
+	parse: function(response) {
+		response.collection = new CH.collections.ClimateHighlights(response.highlights);
+		return response;
 	},
 
 	initialize: function(properties, options) {
-	
-		if( properties && properties.highlights ) {
-			this.set({
-				collection: new CH.collections.ClimateHighlights(properties.highlights)
-			}, false);
-		}
-		
-		this.on('change:date', this.fetch, this);
-
 	}
 	
 });

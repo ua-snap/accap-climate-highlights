@@ -2,12 +2,6 @@ CH.views.Navigation = Backbone.View.extend({
 
 	el: '#climate_highlights_nav',
 
-
-	events: {
-		"click button.previous" : "previousMonth",
-		"click button.next" : "nextMonth"
-	},
-
 	initialize: function() {
 
 		_.bindAll(this);
@@ -30,22 +24,6 @@ CH.views.Navigation = Backbone.View.extend({
 
 		return this;
 
-	},
-
-	previousMonth: function() {
-		this.model.set(
-		{
-			'date' : moment( this.model.get('date'), 'YYYY-MM').subtract('months', 1).format('YYYY-MM')
-		}
-		);
-	},
-
-	nextMonth: function() {
-		this.model.set(
-		{
-			'date' : moment( this.model.get('date'), 'YYYY-MM').add('months', 1).format('YYYY-MM')
-		}
-		);
 	}
 	
 });

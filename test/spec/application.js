@@ -90,6 +90,10 @@ describe('Application container model', function() {
 
   });
 
+  it('refreshes the collection after a fetch', function() {
+    this.fail('not working');
+  });
+
   it('notices when its date is changed, and refreshes the collection from the server', function() {
     var spy = spyOn(CH.models.ClimateHighlightsApp.prototype, 'fetch').andCallThrough();
     model = new CH.models.ClimateHighlightsApp( ch.fixtures.models.august2012 );
@@ -128,6 +132,10 @@ describe('Main application router', function() {
     it('checks for malformed date input, defaulting to current month/year', function() {
       this.router.date('rubbish');
       expect(this.router.appModel.get('date')).toEqual( moment().format('YYYY-MM') );
+    });
+
+    it('binds a handler to the change event on the appModel to refresh the collection', function() {
+      this.fail('tbd');
     });
 
   });
