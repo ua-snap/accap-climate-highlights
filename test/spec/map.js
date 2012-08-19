@@ -40,17 +40,21 @@ describe('interactive map', function() {
 		});
 
 		it('displays a Google map', function() {
+
+			// Set the imageURL to test the config integration
+			CH.config.imageUrl = 'imageUrl';
+
 			this.map.render();
 			expect($('#climate_highlights_map')).toBeVisible();
 		});
 
-		it('draws custom icon markers corresponding to event type to the map', function() {
+		it('draws custom icon markers corresponding to event type to the map, with correct image URL', function() {
 			// Testing the rendered state of the markers isn't straightforward, because it's done on a canvas.
 			// Perhaps there are some events to monitor, but I don't want to test Google's code, so this
 			// test will focus on how the view manages adding markers.
 			expect(this.map.markers.length).toEqual(3); // there's 4 items in the list, but only 3 have lat/lon and should be here
 			expect(this.map.markers[0].position instanceof google.maps.LatLng).toBeTruthy();
-			expect(this.map.markers[0].icon).toEqual('img/icons/high-snow.gif'); // first item with lat/lon
+			expect(this.map.markers[0].icon).toEqual('imageUrl/img/icons/high-snow.gif'); // first item with lat/lon
 
 		});
 

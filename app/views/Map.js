@@ -51,7 +51,7 @@ CH.views.Map = Backbone.View.extend({
 
 			if( ch.get('lat') && ch.get('lon') ) {
 
-				var image = 'img/icons/' + ch.get('kind') + '.gif';
+				var image = CH.config.imageUrl + '/img/icons/' + ch.get('kind') + '.gif';
 				var marker = new google.maps.Marker({
 					position: new google.maps.LatLng(ch.get('lat'), ch.get('lon')),
 					map: this.map,
