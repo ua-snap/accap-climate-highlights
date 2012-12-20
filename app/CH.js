@@ -24,7 +24,7 @@ CH.config.imageUrl = CH.config.imageUrl || '';
 
 // URL Endpoint is between the baseURL of the Drupal instance and the param that will be
 // used to fetch data -- either override with what Drupal generates, or set a default.
-CH.config.serviceEndpoint = CH.config.serviceEndpoint || '';
+CH.config.serviceEndpoint = CH.config.serviceEndpoint || 'http://aurora.snap.uaf.edu/?q=tools/climate_highlights/';
 
 // Define main application router
 CH.router = Backbone.Router.extend({
