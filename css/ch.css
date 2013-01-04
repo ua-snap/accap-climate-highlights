@@ -40,7 +40,47 @@ h3.low-temperatures {
 
 h3.high-rain {
 	background: transparent url(../img/icons/high-rain.gif) left center no-repeat;
-} 
+}
+
+h3.low-rain {
+	background: transparent url(../img/icons/low-rain.gif) left center no-repeat;
+}
+
+h3.high-snow {
+	background: transparent url(../img/icons/high-snow.gif) left center no-repeat;
+}
+
+h3.low-snow {
+	background: transparent url(../img/icons/low-snow.gif) left center no-repeat;
+}
+
+h3.blizzard {
+	background: transparent url(../img/icons/blizzard.gif) left center no-repeat;
+}
+
+h3.lightning {
+	background: transparent url(../img/icons/lightning.gif) left center no-repeat;
+}
+
+h3.wildfire {
+	background: transparent url(../img/icons/wildfire.gif) left center no-repeat;
+}
+
+h3.icing {
+	background: transparent url(../img/icons/icing.gif) left center no-repeat;
+}
+
+h3.drought {
+	background: transparent url(../img/icons/drought.gif) left center no-repeat;
+}
+
+h3.cyclone {
+	background: transparent url(../img/icons/cyclone.gif) left center no-repeat;
+}
+
+h3.wind {
+	background: transparent url(../img/icons/wind.gif) left center no-repeat;
+}
 
 h3.flooding {
 	background: transparent url(../img/icons/flooding.gif) left center no-repeat;

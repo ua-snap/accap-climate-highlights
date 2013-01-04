@@ -6,7 +6,7 @@ CH.views.ClimateHighlightModal = Backbone.View.extend({
 
 		template = _.template($('#template-climate-highlight-modal').html());
 		data = this.model.toJSON();
-		data.title = CH.getTitleFromKind(data.kind) + ', ' + moment().format( 'MMMM YYYY', data.date);
+		data.title = CH.getTitleFromKind(data.kind) + ', ' + moment(data.date, 'YYYY-MM').format('MMMM YYYY');
 		
 		$(this.el).html(template(data));
 		$(this.el).modal();
