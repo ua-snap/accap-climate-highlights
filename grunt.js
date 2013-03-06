@@ -15,7 +15,6 @@ module.exports = function(grunt) {
     concat: {
       drupal: {
         src: [
-          'test/fixtures.js',
           'assets/underscore-min.js',
           'assets/backbone-min.js',
           'assets/moment.min.js',

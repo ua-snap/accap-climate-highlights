@@ -12,6 +12,8 @@ CH.views.ClimateHighlightsApp = Backbone.View.extend({
 		this.mapView = new CH.views.Map( { model: this.model } );
 		this.listsView = new CH.views.ClimateHighlightsLists( { model: this.model } );
 		this.navView = new CH.views.Navigation( { model: this.model } );
+		this.previousMonth = _.debounce(this.previousMonth, 100, true);
+		this.nextMonth = _.debounce(this.nextMonth, 100, true);
 
 		// needed when render() is called through an event callback elsewhere
 		_.bindAll(this);
