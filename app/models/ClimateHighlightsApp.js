@@ -1,11 +1,13 @@
 CH.models.ClimateHighlightsApp = Backbone.Model.extend({
 
 	defaults: {
-		"date":moment().format('YYYY-MM')
+		"date":moment().format('YYYY-MM'),
+		"startDate":moment().format('YYYY-MM'),
+		"endDate":moment().format('YYYY-MM')
 	},
 
 	url: function() {
-		return CH.config.appModelUrl + CH.config.serviceEndpoint + this.get('date');
+		return CH.config.appModelUrl + CH.config.serviceEndpoint + this.get('startDate') + '/' + this.get('endDate');
 	},
 
 	parse: function(response) {

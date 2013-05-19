@@ -54,7 +54,6 @@ CH.router = Backbone.Router.extend({
 		if( false === moment(date).isValid() ) {
 			date = moment().format('YYYY-MM');
 		}
-		this.appModel.set({'date':date});
 	}
 
 });

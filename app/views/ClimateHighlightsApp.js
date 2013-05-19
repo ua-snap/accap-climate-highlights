@@ -5,7 +5,8 @@ CH.views.ClimateHighlightsApp = Backbone.View.extend({
 	events: {
 		"click button.previous" : "previousMonth",
 		"click button.next" : "nextMonth",
-		"focus #startmonth" : "startMonth"
+		"focus #startmonth" : "startMonth",
+		"focus #endmonth" : "endMonth"
 	},
 
 	initialize: function() {
@@ -42,9 +43,18 @@ CH.views.ClimateHighlightsApp = Backbone.View.extend({
 	},
 
 	startMonth: function(e) {
-		if(!!$(e.currentTarget).val() && moment( this.model.get('date'), 'YYYY-MM').format('YYYY-MM') != moment( $(e.currentTarget).val(), 'YYYY-MM').format('YYYY-MM')) {
+		if(!!$(e.currentTarget).val() && moment( this.model.get('startDate'), 'YYYY-MM').format('YYYY-MM') != moment( $(e.currentTarget).val(), 'YYYY-MM').format('YYYY-MM')) {
 			this.model.set({
-				'date' : moment( $(e.currentTarget).val(), 'YYYY-MM').format('YYYY-MM')
+				'startDate' : moment( $(e.currentTarget).val(), 'YYYY-MM').format('YYYY-MM')
+			});
+			this.refresh();
+		}
+	},
+
+	endMonth: function(e) {
+		if(!!$(e.currentTarget).val() && moment( this.model.get('endDate'), 'YYYY-MM').format('YYYY-MM') != moment( $(e.currentTarget).val(), 'YYYY-MM').format('YYYY-MM')) {
+			this.model.set({
+				'endDate' : moment( $(e.currentTarget).val(), 'YYYY-MM').format('YYYY-MM')
 			});
 			this.refresh();
 		}
