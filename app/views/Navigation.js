@@ -19,7 +19,9 @@ CH.views.Navigation = Backbone.View.extend({
 			next: moment(this.model.get('date'), 'YYYY-MM').add('months', 1).format('MMMM YYYY')
 		}));
 
-		$('.datepicker').Zebra_DatePicker();
+		$('.datepicker').Zebra_DatePicker({
+			offset: [5, 100]
+		});
 
 		//$(this.el).find('button.previous').attr('disabled', 0 === this.model.get('previousCount'));
 		//$(this.el).find('button.next').attr('disabled', 0 === this.model.get('nextCount'));

@@ -4,7 +4,8 @@ CH.views.ClimateHighlightsApp = Backbone.View.extend({
 
 	events: {
 		"click button.previous" : "previousMonth",
-		"click button.next" : "nextMonth"
+		"click button.next" : "nextMonth",
+		"focus #startmonth" : "startMonth"
 	},
 
 	initialize: function() {
@@ -38,6 +39,15 @@ CH.views.ClimateHighlightsApp = Backbone.View.extend({
 			'date' : moment( this.model.get('date'), 'YYYY-MM').add('months', 1).format('YYYY-MM')
 		});
 		this.refresh();
+	},
+
+	startMonth: function(e) {
+		if(!!$(e.currentTarget).val() && moment( this.model.get('date'), 'YYYY-MM').format('YYYY-MM') != moment( $(e.currentTarget).val(), 'YYYY-MM').format('YYYY-MM')) {
+			this.model.set({
+				'date' : moment( $(e.currentTarget).val(), 'YYYY-MM').format('YYYY-MM')
+			});
+			this.refresh();
+		}
 	},
 
 	refresh: function() {
