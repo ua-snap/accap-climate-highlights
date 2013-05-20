@@ -9,11 +9,16 @@ CH.views.ClimateHighlightsLists = Backbone.View.extend({
 			return filter === ch.get('interval');
 		});
 
+		interval = _.sortBy(interval, function(ch) {
+			return ch.attributes.summary;
+		});
+
 		if(interval) {
 			$(this.el).append('<h3>'+title+'</h3>');
 			var ul = $('<ul>', {
 				'class':filter
 			});
+
 			_.each(interval, function(ch) {
 				v = new CH.views.ClimateHighlightListItem({model:ch});
 				ul.append( $(v.render().el) );
