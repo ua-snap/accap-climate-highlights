@@ -5,8 +5,8 @@ CH.views.ClimateHighlightsApp = Backbone.View.extend({
 	events: {
 		"click button.previous" : "previousMonth",
 		"click button.next" : "nextMonth",
-		"focus #startmonth" : "startMonth",
-		"focus #endmonth" : "endMonth"
+		"focus #start-month" : "startMonth",
+		"focus #end-month" : "endMonth"
 	},
 
 	initialize: function() {

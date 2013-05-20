@@ -17,12 +17,13 @@ CH.views.Navigation = Backbone.View.extend({
 			month: moment(this.model.get('date'), 'YYYY-MM').format('MMMM YYYY'),
 			previous: moment(this.model.get('date'), 'YYYY-MM').subtract('months', 1).format('MMMM YYYY'),
 			next: moment(this.model.get('date'), 'YYYY-MM').add('months', 1).format('MMMM YYYY'),
-			startmonth: moment(this.model.get('startDate'), 'YYYY-MM').format('YYYY-MM'),
-			endmonth: moment(this.model.get('endDate'), 'YYYY-MM').format('YYYY-MM')
+			startMonth: moment(this.model.get('startDate'), 'YYYY-MM').format('YYYY-MM'),
+			endMonth: moment(this.model.get('endDate'), 'YYYY-MM').format('YYYY-MM')
 		}));
 
 		$('.datepicker').Zebra_DatePicker({
-			offset: [5, 100]
+			offset: [5, 100],
+			format: 'Y-m'
 		});
 
 		//$(this.el).find('button.previous').attr('disabled', 0 === this.model.get('previousCount'));
