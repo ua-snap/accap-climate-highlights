@@ -37,6 +37,7 @@ CH.views.ClimateHighlightsLists = Backbone.View.extend({
 		}
 
 		this.renderTitledFilteredList('daily', 'Daily Events');
+		this.renderTitledFilteredList('multi-day', 'Multi-Day Events');
 		this.renderTitledFilteredList('monthly', 'Monthly Events');
 
 	}
