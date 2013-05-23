@@ -7,7 +7,12 @@ CH.models.ClimateHighlightsApp = Backbone.Model.extend({
 	},
 
 	url: function() {
-		return CH.config.appModelUrl + CH.config.serviceEndpoint + this.get('startDate') + '/' + this.get('endDate');
+		if(this.get('highlightType')) {
+			return CH.config.appModelUrl + CH.config.serviceEndpoint + this.get('startDate') + '/' + this.get('endDate') + '/' + this.get('highlightType');
+		} else {
+			return CH.config.appModelUrl + CH.config.serviceEndpoint + this.get('startDate') + '/' + this.get('endDate');
+		}
+
 	},
 
 	parse: function(response) {

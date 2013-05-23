@@ -3,6 +3,7 @@ CH.views.ClimateHighlightsApp = Backbone.View.extend({
 	el: '#climate_highlights',
 
 	events: {
+		"click #climate_highlight_legend div" : "filterHighlightType",
 		"focus #start-month" : "startMonth",
 		"focus #end-month" : "endMonth"
 	},
@@ -22,6 +23,14 @@ CH.views.ClimateHighlightsApp = Backbone.View.extend({
 		this.mapView.render();
 		this.listsView.render();
 		this.navView.render();
+	},
+
+	filterHighlightType: function(e) {
+		this.model.set({
+			'highlightType' : $(e.currentTarget).attr('id')
+		});
+		alert(this.model.get('highlightType'));
+		this.refresh();
 	},
 
 	startMonth: function(e) {
