@@ -13,6 +13,7 @@ CH.views.ClimateHighlightsApp = Backbone.View.extend({
 		this.mapView = new CH.views.Map( { model: this.model } );
 		this.listsView = new CH.views.ClimateHighlightsLists( { model: this.model } );
 		this.navView = new CH.views.Navigation( { model: this.model } );
+		this.legendView = new CH.views.Legend( { model: this.model } );
 
 		// needed when render() is called through an event callback elsewhere
 		_.bindAll(this);
@@ -23,13 +24,13 @@ CH.views.ClimateHighlightsApp = Backbone.View.extend({
 		this.mapView.render();
 		this.listsView.render();
 		this.navView.render();
+		this.legendView.render();
 	},
 
 	filterHighlightType: function(e) {
 		this.model.set({
 			'highlightType' : $(e.currentTarget).attr('id')
 		});
-		alert(this.model.get('highlightType'));
 		this.refresh();
 	},
 
