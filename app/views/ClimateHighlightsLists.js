@@ -20,8 +20,10 @@ CH.views.ClimateHighlightsLists = Backbone.View.extend({
 			});
 
 			_.each(interval, function(ch) {
-				v = new CH.views.ClimateHighlightListItem({model:ch});
-				ul.append( $(v.render().el) );
+				if($.inArray(ch.attributes.kind, this.model.get('highlightType')) > -1) {
+					v = new CH.views.ClimateHighlightListItem({model:ch});
+					ul.append( $(v.render().el) );
+				}
 			}, this);
 			$(this.el).append(ul);
 		}

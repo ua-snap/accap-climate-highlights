@@ -45,6 +45,7 @@ CH.views.ClimateHighlightsApp = Backbone.View.extend({
 		}
 
 		this.legendView.render();
+		this.listsView.render();
 		this.mapView.render();
 	},
 

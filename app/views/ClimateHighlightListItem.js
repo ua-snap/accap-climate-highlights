@@ -18,6 +18,7 @@ CH.views.ClimateHighlightListItem = Backbone.View.extend({
 		data = this.model.toJSON();
 
 		$(this.el).append(template(data)).addClass(data.kind);
+
 		return this;
 
 	}
