@@ -28,10 +28,24 @@ CH.views.ClimateHighlightsApp = Backbone.View.extend({
 	},
 
 	filterHighlightType: function(e) {
-		this.model.set({
-			'highlightType' : $(e.currentTarget).attr('id')
-		});
-		this.refresh();
+		if($(e.currentTarget).hasClass('disabled')) {
+			this.model.set({
+				"highlightType" : this.model.get('highlightType').slice(0).concat($(e.currentTarget).attr('id'))
+			});
+		} else {
+			var highlightType = this.model.get('highlightType').slice(0);
+			var highlightTypeIndex = highlightType.indexOf($(e.currentTarget).attr('id'));
+			highlightType.splice(highlightTypeIndex, 1);
+
+			if(highlightTypeIndex > -1) {
+				this.model.set({
+					"highlightType" : highlightType
+				});
+			}
+		}
+
+		this.legendView.render();
+		this.mapView.render();
 	},
 
 	startMonth: function(e) {

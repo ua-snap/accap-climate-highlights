@@ -10,11 +10,11 @@ CH.views.Legend = Backbone.View.extend({
 
 	render: function() {
 
-		if(this.model.get('highlightType')) {
-			var highlightType = this.model.get('highlightType');
+		if(this.model.get('highlightType') != '') {
+			var highlightType = this.model.get('highlightType').slice(0);
 
 			$('#climate_highlight_legend div').each(function() {
-				if($(this).attr('id') == highlightType) {
+				if($.inArray($(this).attr('id'), highlightType) > -1) {
 					$(this).removeClass('disabled');
 				} else {
 					$(this).addClass('disabled');

@@ -3,16 +3,28 @@ CH.models.ClimateHighlightsApp = Backbone.Model.extend({
 	defaults: {
 		"date":moment().format('YYYY-MM'),
 		"startDate":moment().format('YYYY-MM'),
-		"endDate":moment().format('YYYY-MM')
+		"endDate":moment().format('YYYY-MM'),
+		"highlightType":[
+			'high-temperatures',
+			'low-temperatures',
+			'high-rain',
+			'low-rain',
+			'high-snow',
+			'low-snow',
+			'blizzard',
+			'cyclone',
+			'drought',
+			'flooding',
+			'icing',
+			'lightning',
+			'sea-ice-changes',
+			'wildfire',
+			'wind'
+		]
 	},
 
 	url: function() {
-		if(this.get('highlightType')) {
-			return CH.config.appModelUrl + CH.config.serviceEndpoint + this.get('startDate') + '/' + this.get('endDate') + '/' + this.get('highlightType');
-		} else {
-			return CH.config.appModelUrl + CH.config.serviceEndpoint + this.get('startDate') + '/' + this.get('endDate');
-		}
-
+		return CH.config.appModelUrl + CH.config.serviceEndpoint + this.get('startDate') + '/' + this.get('endDate');
 	},
 
 	parse: function(response) {

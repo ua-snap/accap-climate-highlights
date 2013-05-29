@@ -45,11 +45,17 @@ CH.views.Map = Backbone.View.extend({
 	},
 
 	renderMarkers: function() {
+
+                var highlightType = this.model.get('highlightType').slice(0);
 	
 		// there shouldn't be zero in the collection, but it's OK if there are zero (no error is triggered)
 		this.model.get('collection').each(function(ch) {
 
 			if( ch.get('lat') && ch.get('lon') ) {
+
+                        	if(highlightType != '' && $.inArray(ch.get('kind'), highlightType) == -1) {
+					return;
+                        	}
 
 				var image = CH.config.imageUrl + '/img/icons/' + ch.get('kind') + '.gif';
 				var marker = new google.maps.Marker({
