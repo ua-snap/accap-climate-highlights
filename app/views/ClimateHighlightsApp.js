@@ -5,7 +5,8 @@ CH.views.ClimateHighlightsApp = Backbone.View.extend({
 	events: {
 		"click #climate_highlight_legend div" : "filterHighlightType",
 		"focus #start-month" : "startMonth",
-		"focus #end-month" : "endMonth"
+		"focus #end-month" : "endMonth",
+		"click #show-date-range:checkbox" : "showDateRange"
 	},
 
 	initialize: function() {
@@ -65,6 +66,14 @@ CH.views.ClimateHighlightsApp = Backbone.View.extend({
 			});
 			this.refresh();
 		}
+	},
+
+	showDateRange: function(e) {
+		this.model.set({
+			'enableDateRange' : e.currentTarget.checked
+		});
+
+		this.refresh();
 	},
 
 	refresh: function() {

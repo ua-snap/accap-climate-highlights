@@ -4,6 +4,7 @@ CH.models.ClimateHighlightsApp = Backbone.Model.extend({
 		"date":moment().format('YYYY-MM'),
 		"startDate":moment().format('YYYY-MM'),
 		"endDate":moment().format('YYYY-MM'),
+		"enableDateRange":false,
 		"highlightType":[
 			'high-temperatures',
 			'low-temperatures',
@@ -24,7 +25,12 @@ CH.models.ClimateHighlightsApp = Backbone.Model.extend({
 	},
 
 	url: function() {
-		return CH.config.appModelUrl + CH.config.serviceEndpoint + this.get('startDate') + '/' + this.get('endDate');
+		if(this.get('enableDateRange')) {
+			return CH.config.appModelUrl + CH.config.serviceEndpoint + this.get('startDate') + '/' + this.get('endDate');
+		} else {
+			return CH.config.appModelUrl + CH.config.serviceEndpoint + this.get('startDate') + '/' + this.get('startDate');
+		}
+
 	},
 
 	parse: function(response) {

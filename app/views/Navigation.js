@@ -18,6 +18,16 @@ CH.views.Navigation = Backbone.View.extend({
 			endMonth: moment(this.model.get('endDate'), 'YYYY-MM').format('YYYY-MM')
 		}));
 
+                if(this.model.get('enableDateRange')) {
+			$("#show-date-range").attr("checked", true);
+			$("#date-range-picker-text").text("Choose date range:");
+                        $("#end-month-container").show();
+                } else {
+			$("#show-date-range").attr("checked", false);
+			$("#date-range-picker-text").val("Choose date:");
+                        $("#end-month-container").hide();
+                }
+
 		$('.datepicker').Zebra_DatePicker({
 			offset: [5, 100],
 			format: 'Y-m'
