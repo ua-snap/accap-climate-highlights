@@ -29,20 +29,37 @@ CH.views.ClimateHighlightsApp = Backbone.View.extend({
 	},
 
 	filterHighlightType: function(e) {
-		if($(e.currentTarget).hasClass('disabled')) {
-			this.model.set({
-				"highlightType" : this.model.get('highlightType').slice(0).concat($(e.currentTarget).attr('id'))
-			});
-		} else {
-			var highlightType = this.model.get('highlightType').slice(0);
-			var highlightTypeIndex = highlightType.indexOf($(e.currentTarget).attr('id'));
-			highlightType.splice(highlightTypeIndex, 1);
+		// If user has already enabled "Filter by Type" by clicking an
+		// icon, allow more types to be enabled one by one. Else, set
+		// the first icon they click to be the only filter enabled.
+		if(this.model.get('enableFilterByType')) {
 
-			if(highlightTypeIndex > -1) {
+			// If the user has clicked a disabled filter, enable it.
+			// Else, the filter needs to be disabled.
+			if($(e.currentTarget).hasClass('disabled')) {
+				// Add clicked highlight type filter to array.
 				this.model.set({
-					"highlightType" : highlightType
+					"highlightType" : this.model.get('highlightType').slice(0).concat($(e.currentTarget).attr('id'))
 				});
+			} else {
+				// Copy the highlight type filters array.
+				var highlightType = this.model.get('highlightType').slice(0);
+
+				// Remove clicked highlight type from array.
+				var highlightTypeIndex = highlightType.indexOf($(e.currentTarget).attr('id'));
+				highlightType.splice(highlightTypeIndex, 1);
+
+				if(highlightTypeIndex > -1) {
+					this.model.set({
+						"highlightType" : highlightType
+					});
+				}
 			}
+		} else {
+			this.model.set({
+				"highlightType" : [$(e.currentTarget).attr('id')],
+				"enableFilterByType" : true
+			});
 		}
 
 		this.legendView.render();

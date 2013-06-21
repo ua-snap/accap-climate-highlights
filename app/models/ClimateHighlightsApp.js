@@ -5,6 +5,7 @@ CH.models.ClimateHighlightsApp = Backbone.Model.extend({
 		"startDate":moment().format('YYYY-MM'),
 		"endDate":moment().format('YYYY-MM'),
 		"enableDateRange":false,
+		"enableFilterByType":false,
 		"highlightType":[
 			'high-temperatures',
 			'low-temperatures',
