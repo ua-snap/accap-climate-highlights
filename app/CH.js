@@ -24,7 +24,7 @@ CH.config.imageUrl = CH.config.imageUrl || '';
 
 // URL Endpoint is between the baseURL of the Drupal instance and the param that will be
 // used to fetch data -- override with what Drupal generates.
-CH.config.serviceEndpoint = CH.config.serviceEndpoint || ''; 
+CH.config.serviceEndpoint = CH.config.serviceEndpoint || 'data/'; 
 
 // Define main application router
 CH.router = Backbone.Router.extend({
@@ -54,6 +54,18 @@ CH.router = Backbone.Router.extend({
 		if( false === moment(date).isValid() ) {
 			date = moment().format('YYYY-MM');
 		}
+
+		this.appModel.fetch({
+			success: $.proxy(function(model, response) {
+				this.appView.render();
+			}, this)
+		}, { silent: true });
+
+	        this.appModel.set({
+        	        'startDate': date
+                });
+
+                this.appView.render();
 	}
 
 });
