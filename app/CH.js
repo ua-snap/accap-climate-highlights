@@ -30,7 +30,8 @@ CH.config.serviceEndpoint = CH.config.serviceEndpoint || 'data/';
 CH.router = Backbone.Router.extend({
 	routes: {
 		"" : "index",
-		"date/:date" : "date"
+		"date/:date" : "date",
+		"date/:startDate/:endDate" : "dateRange"
 	},
 
 	initialize: function(appModel) {
@@ -55,15 +56,36 @@ CH.router = Backbone.Router.extend({
 			date = moment().format('YYYY-MM');
 		}
 
+	        this.appModel.set({
+        	        'startDate': date
+                });
+
 		this.appModel.fetch({
 			success: $.proxy(function(model, response) {
 				this.appView.render();
 			}, this)
 		}, { silent: true });
 
+                this.appView.render();
+	},
+
+	dateRange: function(startDate, endDate) {
+		if( false === moment(startDate).isValid() || false === moment(endDate).isValid() ) {
+			startDate = moment().format('YYYY-MM');
+			endDate = moment().format('YYYY-MM');
+		}
+
 	        this.appModel.set({
-        	        'startDate': date
+        	        'startDate': startDate,
+			'endDate': endDate,
+			'enableDateRange': true
                 });
+
+		this.appModel.fetch({
+			success: $.proxy(function(model, response) {
+				this.appView.render();
+			}, this)
+		}, { silent: true });
 
                 this.appView.render();
 	}
