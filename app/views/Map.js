@@ -6,7 +6,7 @@ CH.views.Map = Backbone.View.extend({
 			zoom: 4,
 			mapTypeId: google.maps.MapTypeId.TERRAIN,
 			minZoom: 3,
-			maxZoom: 5
+			maxZoom: 8
 		};
 	},
 
