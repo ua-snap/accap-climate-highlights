@@ -94,11 +94,11 @@ CH.views.ClimateHighlightsApp = Backbone.View.extend({
 	},
 
 	refresh: function() {
-		this.model.fetch({
-			success: $.proxy(function(model, xhr) {
-				this.render();
-			}, this)
-		}, { silent: true });
+		if(this.model.get('enableDateRange')) {
+			Backbone.history.navigate("#date/" + this.model.get('startDate') + "/" + this.model.get('endDate'), true);
+		} else {
+			Backbone.history.navigate("#date/" + this.model.get('startDate'), true);
+		}
 	}
 	
 });

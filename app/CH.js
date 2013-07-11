@@ -44,11 +44,7 @@ CH.router = Backbone.Router.extend({
 	},
 
 	index: function() {
-		this.appModel.fetch({
-			success: $.proxy(function(model, response) {
-				this.appView.render();
-			}, this)
-		}, { silent: true });
+		this.navigate("#date/" + moment().format('YYYY-MM'));
 	},
 
 	date: function(date) {
