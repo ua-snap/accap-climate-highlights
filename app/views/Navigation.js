@@ -22,10 +22,12 @@ CH.views.Navigation = Backbone.View.extend({
 			$("#show-date-range").attr("checked", true);
 			$("#date-range-picker-text").text("Choose date range:");
                         $("#end-month-container").show();
+			$("#date-range-note").show();
                 } else {
 			$("#show-date-range").attr("checked", false);
 			$("#date-range-picker-text").val("Choose date:");
                         $("#end-month-container").hide();
+			$("#date-range-note").hide();
                 }
 
 		$('.datepicker').Zebra_DatePicker({
