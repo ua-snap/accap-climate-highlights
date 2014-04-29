@@ -44,7 +44,7 @@ CH.router = Backbone.Router.extend({
 	},
 
 	index: function() {
-		Backbone.history.navigate("#date/" + moment().format('YYYY-MM'), true);
+		Backbone.history.navigate("#date/" + moment().subtract('days', 14).format('YYYY-MM'), true);
 	},
 
 	date: function(date) {

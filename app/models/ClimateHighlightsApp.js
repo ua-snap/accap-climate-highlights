@@ -1,8 +1,8 @@
 CH.models.ClimateHighlightsApp = Backbone.Model.extend({
 
 	defaults: {
-		"startDate":moment().format('YYYY-MM'),
-		"endDate":moment().format('YYYY-MM'),
+		"startDate":moment().subtract('days', 14).format('YYYY-MM'),
+		"endDate":moment().subtract('days', 14).format('YYYY-MM'),
 		"enableDateRange":false,
 		"enableFilterByType":false,
 		"highlightType":[
