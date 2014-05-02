@@ -57,7 +57,7 @@ CH.views.Map = Backbone.View.extend({
 					return;
                         	}
 
-				var image = CH.config.imageUrl + '/img/icons/' + ch.get('kind') + '.gif';
+				var image = CH.config.imageUrl + '/img/icons/' + ch.get('kind') + '.png';
 				var marker = new google.maps.Marker({
 					position: new google.maps.LatLng(ch.get('lat'), ch.get('lon')),
 					map: this.map,
