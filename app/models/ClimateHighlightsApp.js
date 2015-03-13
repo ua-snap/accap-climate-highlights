@@ -16,9 +16,11 @@ CH.models.ClimateHighlightsApp = Backbone.Model.extend({
 			'cyclone',
 			'drought',
 			'flooding',
+			'freezing-rain',
 			'icing',
 			'lightning',
 			'sea-ice-changes',
+			'unusual-animal-sighting',
 			'wildfire',
 			'wind'
 		]

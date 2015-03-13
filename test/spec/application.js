@@ -120,9 +120,11 @@ describe('application utility belt', function() {
     expect(CH.getTitleFromKind('cyclone')).toEqual('Cyclone');
     expect(CH.getTitleFromKind('drought')).toEqual('Drought');
     expect(CH.getTitleFromKind('flooding')).toEqual('Flooding');
+    expect(CH.getTitleFromKind('freezing-rain')).toEqual('Freezing Rain');
     expect(CH.getTitleFromKind('icing')).toEqual('Icing');
     expect(CH.getTitleFromKind('lightning')).toEqual('Lightning');
     expect(CH.getTitleFromKind('sea-ice-changes')).toEqual('Sea Ice Changes');
+    expect(CH.getTitleFromKind('unusual-animal-sighting')).toEqual('Sea Ice Changes');
     expect(CH.getTitleFromKind('wildfire')).toEqual('Wildfire');
     expect(CH.getTitleFromKind('wind')).toEqual('Wind');
   });

@@ -101,9 +101,11 @@ CH.getTitleFromKind = function(kind) {
 		case 'cyclone': return 'Cyclone';
 		case 'drought': return 'Drought';
 		case 'flooding': return 'Flooding';
+		case 'freezing-rain': return 'Freezing Rain';
 		case 'icing': return 'Icing';
 		case 'lightning': return 'Thunderstorm and Lightning';
 		case 'sea-ice-changes': return 'Sea Ice Changes';
+		case 'unusual-animal-sighting': return 'Unusual Animal Sighting';
 		case 'wildfire': return 'Wildfire';
 		case 'wind': return 'Wind Event';
 	}
